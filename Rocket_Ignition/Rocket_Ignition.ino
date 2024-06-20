@@ -7,7 +7,8 @@ long code;
 bool activated = 0;
 
 #define OK_CODE 0xE31CFF00
-#define CONTROL_PIN 6
+#define CONTROL_PIN 4
+#define LED_PIN 3
 
 /*
 Remote Control Codes
@@ -36,7 +37,9 @@ void setup(){
   irrecv.enableIRIn();
   irrecv.blink13(true);
   pinMode(CONTROL_PIN, OUTPUT);
+  pinMode(LED_PIN, OUTPUT);
   digitalWrite(CONTROL_PIN, LOW);
+  digitalWrite(LED_PIN, LOW);
 }
 
 void loop(){
@@ -62,9 +65,11 @@ void loop(){
 void turn_on(void){
   Serial.println(F("ON"));
   digitalWrite(CONTROL_PIN, HIGH);
+  digitalWrite(LED_PIN, HIGH);
 }
 
 void turn_off(void){
   Serial.println(F("OFF"));
   digitalWrite(CONTROL_PIN, LOW);
+  digitalWrite(LED_PIN, LOW);
 }
